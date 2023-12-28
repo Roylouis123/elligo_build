@@ -52,7 +52,7 @@ const DocumentUploader: React.FC = () => {
     setInputStatus("idle");
     setButtonStatus("ready");
   };
-
+  
   return (
     <div>
       <h2 className="text-2xl font-bold pb-4">Add document</h2>

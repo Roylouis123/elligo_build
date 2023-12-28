@@ -3,7 +3,8 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Layout from "./routes/layout";
-import Documents from "./routes/documents";
+import Drawer from "./components/appdrawer/drawer";
+import Dashboard from "./components/Dashboard/dashboard";
 import Chat from "./routes/chat";
 
 Amplify.configure({
@@ -30,25 +31,38 @@ Amplify.configure({
   },
 });
 
-let router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        index: true,
-        Component: Documents,
-      },
-      {
-        path: "/doc/:documentid/:conversationid",
-        Component: Chat,
-      },
-    ],
-  },
-]);
+// let router = createBrowserRouter([
+//   {
+//     path: "/",
+//     // element: <Drawer />,
+//     children: [
+//       {
+//         index: true,
+//         Component: Documents,
+//       },
+//       {
+//         path: "/doc/:documentid/:conversationid",
+//         Component: Chat,
+//       },
+//     ],
+//   },
+// ]);
+
+// function App() {
+//   return <RouterProvider router={router} />;
+// }
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <div style={{ display: 'flex', height: '100vh' }}>
+      <div style={{ flex: 1, position: 'fixed', left: 0, top: 0, bottom: 0 }}>
+        <Drawer />
+      </div>
+      <div style={{ flex: 1, marginLeft: '350px' }}>
+        <Dashboard />
+      </div>
+    </div>
+  );
 }
 
 export default withAuthenticator(App, { hideSignUp: true });

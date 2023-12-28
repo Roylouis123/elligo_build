@@ -1,0 +1,130 @@
+/* content-section */
+.content-section{
+    padding: 10px 20px ;
+}
+.content-header{
+    border:1px solid #dfdfdf;
+    border-top: 3px solid #1d5d6d;
+    border-radius: 0px 0px 5px 5px;
+    position: relative;
+    margin-bottom: 20px;
+}
+.content-header-badge .badge img {
+    width: 12px;
+    height: 12px;
+}
+.content-header-badge .badge{
+    align-items: center;
+    background: #1d5d6d;
+    border-radius: 0 0 6px 6px;
+    box-shadow: 0 3px 10px -2px rgba(0,0,0,.3);
+    color: #fff;
+    display: flex;
+    column-gap: 5px;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 7px 20px;
+    width: 80px;
+}
+.content-header-badge{
+    padding: 0px 0px 0px 20px;
+    margin-bottom: 20px;
+
+}
+.content-header-details{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+    margin-bottom: 10px;
+}
+.content-header-subdetails ul li{
+    
+    display: flex;
+    flex-direction: row;
+    column-gap: 5px;
+    place-items: center;
+    flex-wrap: wrap;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+.content-header-title h3{
+    font-size: 1.75rem;
+}
+.content-header-action{
+    background: #f6f7f8;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #e8ebed;
+    display: flex;
+    place-items: center;
+    column-gap: 15px;
+    justify-content: flex-end;
+    min-height: 35px;
+    padding: 10px 20px;
+}
+.content-header-action button{
+    padding: 5px 10px;
+    height: 32px;
+    font-size: 13px;
+    background-color: #63717f;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.content-header-action .action-menu{
+    cursor: pointer;
+}
+.enlarge{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+}
+
+/* content-view */
+
+.content-view{
+    border-radius: 5px;
+    box-shadow: 0 4px 11px rgba(0,0,0,.1);
+}
+.MuiButtonBase-root .Mui-selected{
+    border: 1px solid #dfdfdf !important;
+    border-bottom: none !important ;
+}
+.MuiButtonBase-root.Mui-selected.selected-tab {
+    border: 1px solid #dfdfdf;
+    border-bottom: none;
+    border-top: none;
+  }
+.MuiButtonBase-root.Mui-selected.selected-tab1 {
+    border: 1px solid #dfdfdf;
+    border-bottom: none;
+    border-top: none;
+    border-left: none;
+  }
+
+
+  .border-bottom{
+    border-bottom: 1px solid #dfdfdf !important;
+  }
+  .MuiBox-root{
+    border: none !important;
+  }
+  .MuiButtonBase-root{
+    font-size: 10px !important;
+  }
+  .css-i4bv87-MuiSvgIcon-root{
+    width: 10px;
+    height: 10px;
+  }
+
+  .css-1ujnqem-MuiTabs-root{
+    height: 48px !important;
+    display: flex;
+    justify-content: center;
+    place-items: center;
+  }
+  .css-h0q0iv-MuiButtonBase-root-MuiTab-root {
+    min-height: 48px !important;
+    line-height: 0px !important;
+  }
