@@ -174,37 +174,6 @@ Resources:
             Path: /generate_presigned_url
             Method: GET
 
-  UploadTriggerFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/upload_trigger/
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref DocumentTable
-        - DynamoDBCrudPolicy:
-            TableName: !Ref MemoryTable
-        - S3ReadPolicy:
-            BucketName: !Sub "${AWS::StackName}-${AWS::Region}-${AWS::AccountId}*"
-        - SQSSendMessagePolicy:
-            QueueName: !GetAtt EmbeddingQueue.QueueName
-      Environment:
-        Variables:
-          DOCUMENT_TABLE: !Ref DocumentTable
-          MEMORY_TABLE: !Ref MemoryTable
-          QUEUE: !GetAtt EmbeddingQueue.QueueName
-          BUCKET: !Sub "${AWS::StackName}-${AWS::Region}-${AWS::AccountId}"
-      Events:
-        S3Event:
-          Type: S3
-          Properties:
-            Bucket: !Ref DocumentBucket
-            Events:
-              - s3:ObjectCreated:*
-            Filter:
-              S3Key:
-                Rules:
-                  - Name: suffix
-                    Value: .pdf
 
   GetDocumentFunction:
     Type: AWS::Serverless::Function
@@ -244,86 +213,6 @@ Resources:
             RestApiId: !Ref Api
             Path: /doc
             Method: GET
-
-  AddConversationFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/add_conversation/
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref DocumentTable
-        - DynamoDBCrudPolicy:
-            TableName: !Ref MemoryTable
-      Environment:
-        Variables:
-          DOCUMENT_TABLE: !Ref DocumentTable
-          MEMORY_TABLE: !Ref MemoryTable
-      Events:
-        Root:
-          Type: Api
-          Properties:
-            RestApiId: !Ref Api
-            Path: /doc/{documentid}
-            Method: POST
-
-  GenerateEmbeddingsFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/generate_embeddings/
-      Timeout: 180
-      MemorySize: 2048
-      Policies:
-        - SQSPollerPolicy:
-            QueueName: !GetAtt EmbeddingQueue.QueueName
-        - S3CrudPolicy:
-            BucketName: !Ref DocumentBucket
-        - DynamoDBCrudPolicy:
-            TableName: !Ref DocumentTable
-        - Statement:
-            - Sid: "BedrockScopedAccess"
-              Effect: "Allow"
-              Action: "bedrock:InvokeModel"
-              Resource: "arn:aws:bedrock:*::foundation-model/amazon.titan-embed-text-v1"
-      Environment:
-        Variables:
-          DOCUMENT_TABLE: !Ref DocumentTable
-          BUCKET: !Ref DocumentBucket
-      Events:
-        EmbeddingQueueEvent:
-          Type: SQS
-          Properties:
-            Queue: !GetAtt EmbeddingQueue.Arn
-            BatchSize: 1
-
-  GenerateResponseFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      CodeUri: src/generate_response/
-      Timeout: 30
-      MemorySize: 2048
-      Policies:
-        - DynamoDBCrudPolicy:
-            TableName: !Ref MemoryTable
-        - S3CrudPolicy:
-            BucketName: !Ref DocumentBucket
-        - Statement:
-            - Sid: "BedrockScopedAccess"
-              Effect: "Allow"
-              Action: "bedrock:InvokeModel"
-              Resource:
-                - "arn:aws:bedrock:*::foundation-model/anthropic.claude-v2"
-                - "arn:aws:bedrock:*::foundation-model/amazon.titan-embed-text-v1"
-      Environment:
-        Variables:
-          MEMORY_TABLE: !Ref MemoryTable
-          BUCKET: !Ref DocumentBucket
-      Events:
-        Root:
-          Type: Api
-          Properties:
-            RestApiId: !Ref Api
-            Path: /{documentid}/{conversationid}
-            Method: POST
 
   AmplifyApp:
     Type: AWS::Amplify::App
