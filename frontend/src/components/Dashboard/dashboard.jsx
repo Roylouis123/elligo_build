@@ -12,6 +12,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import DocumentUploader from "../DocumentUploader";
+import DocumentList from "../DocumentList";
 
 import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
@@ -92,7 +93,7 @@ const Dashboard = () => {
           </TabList>
         </Box>
         <TabPanel value="1"><DocumentUploader /></TabPanel>
-        <TabPanel value="2">Item Two</TabPanel>
+        <TabPanel value="2"><DocumentList/></TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
         <TabPanel value="4">People</TabPanel>
         <TabPanel value="5">SubItems</TabPanel>
