@@ -14,7 +14,7 @@ const DocumentDetail: React.FC<Document> = (document: Document) => {
   return (
     <>
       <h3 className="text-center mb-3 text-lg font-bold tracking-tight text-gray-900">
-        {document.filename}
+        {document.Owner}
       </h3>
       <div className="flex flex-col space-y-2">
         <div className="inline-flex items-center">

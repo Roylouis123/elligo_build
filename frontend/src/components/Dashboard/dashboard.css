@@ -1,6 +1,8 @@
 /* content-section */
 .content-section{
-    padding: 10px 20px ;
+    margin-left: 15px;
+    overflow: hidden;
+
 }
 .content-header{
     border:1px solid #dfdfdf;
@@ -85,7 +87,7 @@
 
 .content-view{
     border-radius: 5px;
-    box-shadow: 0 4px 11px rgba(0,0,0,.1);
+    box-shadow: 2px 7px 11px 7px rgba(0,0,0,.1);
 }
 .MuiButtonBase-root .Mui-selected{
     border: 1px solid #dfdfdf !important;

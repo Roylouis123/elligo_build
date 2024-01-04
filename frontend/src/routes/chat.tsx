@@ -98,7 +98,7 @@ const Document: React.FC = () => {
   };
 
   return (
-    <div className="">
+    <div style={{ height: '100%',margin:2,marginLeft:"10px",overflow: 'hidden' }}>
       {loading === "loading" && !conversation && (
         <div className="flex flex-col items-center mt-6">
           <img src={LoadingGrid} width={40} />

@@ -1,11 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Auth } from "aws-amplify";
+import { useDispatch } from 'react-redux';
 import Navigation from "../components/Navigation";
-import Footer from "../components/Footer";
+import { logout } from "../redux/counterSlice";
 
 const Layout: React.FC = () => {
   const [userInfo, setUserInfo] = useState<any>(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => setUserInfo(await Auth.currentUserInfo()))();
@@ -16,12 +18,13 @@ const Layout: React.FC = () => {
   ) => {
     event.preventDefault();
     await Auth.signOut();
+    dispatch(logout());
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div style={{top: 0, bottom: 0, left: 0, right: 0, position: 'inherit'}}>
       <div>
-        <Navigation
+         <Navigation
           userInfo={userInfo}
           handleSignOutClick={handleSignOutClick}
         />
@@ -29,7 +32,6 @@ const Layout: React.FC = () => {
           <Outlet />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

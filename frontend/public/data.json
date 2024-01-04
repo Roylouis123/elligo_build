@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "author": {
+            "name": "John Doe",
+            "avatar": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+        },
+        "comment": "This is a dummy comment.",
+        "replies": [
+            {
+                "author": {
+                    "name": "Jane Doe",
+                    "avatar": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+                },
+                "comment": "This is a reply to the comment."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "author": {
+            "name": "Alice",
+            "avatar": "https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
+        },
+        "comment": "Another dummy comment.",
+        "replies": []
+    }
+]
