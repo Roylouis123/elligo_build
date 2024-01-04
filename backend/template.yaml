@@ -191,6 +191,19 @@ Resources:
             Path: /generate_presigned_url
             Method: GET
 
+  GetCommentsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/generate_comments/
+      Events:
+        Root:
+          Type: Api
+          Properties:
+            RestApiId: !Ref Api
+            Path: /generateComments
+            Method: POST
+
+
   UploadTriggerFunction:
     Type: AWS::Serverless::Function
     Properties:

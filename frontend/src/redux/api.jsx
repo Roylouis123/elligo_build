@@ -16,21 +16,20 @@ const GetDocs = async (auths) => {
 
   const s3 = new AWS.S3();
   // const params = {
-  //   Bucket: "sam-elligo-us-east-1-987691363194",
+  //   Bucket: "sam-elligoo-us-east-1-987691363194",
   // };
 
   const API = get(auths,"signInUserSession.accessToken.payload.cognito:groups[0]",[])
 
   let params;
-  console.log(API,"paramsparamsparams")
 
   if(API === "Admin"){
     params = {
-      Bucket: "sam-elligo-us-east-1-987691363194",
+      Bucket: "sam-elligoo-us-east-1-987691363194",
     };
   }else{
     params = {
-      Bucket: "sam-elligo-us-east-1-987691363194",
+      Bucket: "sam-elligoo-us-east-1-987691363194",
       Prefix: username + "/",  
     };
   }
@@ -44,7 +43,7 @@ const GetDocs = async (auths) => {
   const files = [];
   for (let content of data) {
     const urlParams = {
-      Bucket: "sam-elligo-us-east-1-987691363194",
+      Bucket: "sam-elligoo-us-east-1-987691363194",
       Key: content.Key,
       Expires: 60 * 5,
     };

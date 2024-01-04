@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
 import { getDocumentById } from "../../redux/counterSlice";
 import { get, isEmpty, map, toUpper } from "lodash";
+import { API } from "aws-amplify";
+import axios from "axios";
 
 const Drawer = () => {
 
@@ -21,6 +23,28 @@ const Drawer = () => {
   const handleSelectTab = (d) => () => {
     dispatch(getDocumentById(d))
   }
+
+
+  
+   
+
+    async function fetchData() {
+      const res= await API.post(
+        "serverless-pdf-chat",
+        `/873247324324324/432432432323`,
+        {
+          body: {
+            fileName: "conversation?.document.filename",
+            prompt: "prompt",
+          },
+        }
+      );
+
+      console.log(res,"resresresresres")
+    }
+  
+    fetchData();
+ 
 
 
   
